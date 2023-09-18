@@ -1,39 +1,54 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import env from 'react-dotenv';
 
-function Balance() {
-  const [balance, setBalance] = useState<string | null>(null);
-  const address = '0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f'; // Replace with the address you're interested in
-  const apiKey = 'r32vgucX-l2554u4_FqXg0CTZQLLwSH_'; // Replace with your Alchemy API key
 
-  useEffect(() => {
-    const url = `https://polygon-mainnet.g.alchemy.com/v2/${apiKey}`;
-    const payload = {
-      jsonrpc: '2.0',
-      id: 1,
-      method: 'eth_getBalance',
-      params: [address, 'latest'] // Replace 'latest' with 'pending' or 'earliest' if needed
-    };
-
-    axios.post(url, payload)
-      .then(response => {
-        const balanceInWei = response.data.result;
-        setBalance(balanceInWei);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
-
-  return (
-    <div>
-      {balance ? (
-        <p>Balance in Wei: {balance}</p>
-      ) : (
-        <p>Loading balance...</p>
-      )}
-    </div>
-  );
+interface BalanceFormProps {
+  onGetBalance: (address: string, balance: string) => void;
 }
 
-export default Balance;
+function BalanceForm({ onGetBalance }: BalanceFormProps) {
+  const [address, setAddress] = useState<string>('');
+
+  const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAddress(event.target.value);
+  };
+
+  const handleGetBalance = () => {
+      const apiKey = env.POLYGON_API_KEY;
+      const url = `https://polygon-mainnet.g.alchemy.com/v2/${apiKey}`;
+      const payload = {
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'eth_getBalance',
+        params: [address, 'latest'], // Pass the address and block parameter
+      };
+  
+      axios.post(url, payload)
+        .then(response => {
+          const balance = response.data.result;
+          // Call the onGetBalance callback with the address and balance
+          onGetBalance(address, balance);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    };
+  
+    return (
+      <div>
+        <h2>Get Balance</h2>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter Ethereum Address"
+            value={address}
+            onChange={handleAddressChange}
+          />
+          <button onClick={handleGetBalance}>Get Balance</button>
+        </div>
+      </div>
+    );
+  }
+  
+  export default BalanceForm;
