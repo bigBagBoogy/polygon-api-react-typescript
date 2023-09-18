@@ -7,38 +7,36 @@ import env from 'react-dotenv';
 function BlockNumber() {
   const [blockNumber, setBlockNumber] = useState<string | null>(null);
 
-  useEffect(() => {   
-    // const apiKey = process.env.POLYGON_API_KEY; // Replace with your Alchemy API key
-    const apiKey = env.POLYGON_API_KEY;
-    const url = `https://polygonzkevm-mainnet.g.alchemy.com/v2/${apiKey}`;
-    
-    const payload = {
-      jsonrpc: '2.0',
-      id: 1,
-      method: 'eth_blockNumber',
-      params: []
-    };
-    
-    axios.post(url, payload)
-      .then(response => {
-        const result = response.data.result;
-        setBlockNumber(result); // Update the blockNumber state with the fetched value
-        console.log('Block Number:', result);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
 
+  const fetchBlockNumber = async () => {
+    // Your Alchemy API Key
+    const apiKey = env.POLYGON_API_KEY;
+
+    try {
+      const url = `https://polygonzkevm-mainnet.g.alchemy.com/v2/${apiKey}`;
+      const payload = {
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'eth_blockNumber',
+        params: [],
+      };
+      const response = await axios.post(url, payload);
+      const result = response.data.result;
+      setBlockNumber(result);
+    } catch (error) {
+      console.error('Error fetching block number:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlockNumber();
+  }, []);
 
   return (
     <div>
       <h2>Polygon zkEVM Block Number</h2>
-      {blockNumber ? (
-        <p>Current Block Number: {blockNumber}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <p>Current Block Number: {blockNumber}</p>
+      <button onClick={fetchBlockNumber}>Fetch Block Number</button>
     </div>
   );
 }
