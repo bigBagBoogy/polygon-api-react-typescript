@@ -16,6 +16,7 @@ function BalanceForm({ onGetBalance }: BalanceFormProps) {
 
   const handleGetBalance = () => {
       const apiKey = env.POLYGON_API_KEY;
+    
       const url = `https://polygon-mainnet.g.alchemy.com/v2/${apiKey}`;
       const payload = {
         jsonrpc: '2.0',
