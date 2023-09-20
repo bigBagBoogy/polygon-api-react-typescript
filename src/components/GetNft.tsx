@@ -47,7 +47,39 @@ function GetNft({ address, onGetNft }: GetNftProps) {
 
   return (
     <div>
-      {/* Your component's UI goes here */}
+      <div>
+      <h2>Get NFT</h2>
+      <div>
+        <input
+          type="text"
+          placeholder="Enter Ethereum Address"
+          value={address}
+          onChange={handleAddressChange}
+        />
+        <button onClick={handleGetNft}>Get NFT</button>
+      </div>
+
+      {isLoading ? (
+        <p>Loading NFT data...</p>
+      ) : (
+        <div>{nftData.length === 0 ? (
+          <p>No NFTs found for the given address.</p>
+        ) : (
+          <ul>
+            {nftData.map((nft: NftInfo, index: number) => (
+              <li key={index}>
+                <strong>Name:</strong> {nft.name}
+                <br />
+                <strong>Description:</strong> {nft.description}
+              </li>
+            ))}
+          </ul>
+    
+        
+                )}
+        </div>
+      )}
+    </div>
     </div>
   );
 }
