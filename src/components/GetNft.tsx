@@ -34,6 +34,7 @@ function GetNft({ address, onGetNft }: GetNftProps) {
       .request(options)
       .then((response) => {
         const nfts = response.data.ownedNfts;
+        console.log(nfts);
         // Extract names and descriptions of the NFTs
         const nftInfo = nfts.map((nft: any) => ({
           name: nft.contractMetadata.name,
