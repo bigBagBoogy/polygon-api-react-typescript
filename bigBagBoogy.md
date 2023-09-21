@@ -8,6 +8,8 @@ git push -u origin main
 
 # remove: (for example node_modules)!
 
+.filter((nft: any) => nft.media)
+
 git rm -r --cached node_modules
 
 # Read often!
@@ -52,6 +54,7 @@ setCount(count + 1);
 };
 
 return (
+
 <div>
 <p>Count: {count}</p>
 <button onClick={increment}>Increment</button>

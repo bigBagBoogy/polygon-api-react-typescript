@@ -39,6 +39,7 @@ function GetNft({ address, onGetNft }: GetNftProps) {
         const nftInfo = nfts.map((nft: any) => ({
           name: nft.contractMetadata.name,
           description: nft.description,
+          media: nft.media[0].raw,
         }));
 
         // Call the onGetNft callback with the extracted data
@@ -72,7 +73,7 @@ function GetNft({ address, onGetNft }: GetNftProps) {
         />
         <button onClick={handleGetNft}>Get NFT</button>
       </div>
-
+  
       {isLoading ? (
         <p>Loading NFT data...</p>
       ) : (
@@ -81,19 +82,36 @@ function GetNft({ address, onGetNft }: GetNftProps) {
             <p>No NFTs found for the given address.</p>
           ) : (
             <ul>
-              {nftData.map((nft: any, index: number) => (
+              {nftData.filter((nft: any) => nft.media)
+              .map((nft: any, index: number) => (
                 <li key={index}>
                   <strong>Name:</strong> {nft.name}
                   <br />
                   <strong>Description:</strong> {nft.description}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
+                  <br />
+                  {nft.media.toLowerCase().startsWith('data:image/svg') ? (
+                  <img
+                    src={nft.media}
+                    alt="NFT Image"
+                    style={{ width: '200px', height: '200px' }}
+                  />
+                ) : nft.media.startsWith('ipfs://') ? (
+                  <img
+                    src={`https://ipfs.io/ipfs/${nft.media.split('ipfs://')[1]}`}
+                    alt="NFT Image"
+                    style={{ width: '200px', height: '200px' }}
+                  />
+                ) : (
+                  <p>Unsupported image format</p>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    )}
+  </div>
+);
 
-export default GetNft;
+              }
+  export default GetNft;
