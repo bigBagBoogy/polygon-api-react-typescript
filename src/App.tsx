@@ -20,9 +20,10 @@ function App() {
   return (
     <div>
       <h2>Polygon App</h2>
+      <p>test address:   0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
       <BalanceForm onGetBalance={handleGetBalance} />
       <BlockNumber />
-      <GetNft address="0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f" onGetNft={handleGetNft} />
+      <GetNft address="" onGetNft={handleGetNft} />
       {balance && <h3>Balance: {balance}</h3>}
     </div>
   );

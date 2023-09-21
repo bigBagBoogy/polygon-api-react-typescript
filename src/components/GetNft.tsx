@@ -1,5 +1,5 @@
 // GetNft.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import env from 'react-dotenv';
 
@@ -9,22 +9,26 @@ interface GetNftProps {
 }
 
 function GetNft({ address, onGetNft }: GetNftProps) {
-  useEffect(() => {
-    // const apiKey = env.SEPOLIA_API_KEY;
+  const [isLoading, setIsLoading] = useState(false);
+  const [nftData, setNftData] = useState<any[]>([]);
+  const [inputAddress, setInputAddress] = useState(address);
+
+  const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputAddress(event.target.value);
+  };
+
+  const handleGetNft = () => {
+    setIsLoading(true);
+
     const apiKey = env.POLYGON_API_KEY;
-    
-    const url = `https://eth-sepolia.g.alchemy.com/nft/v2/${apiKey}/getNFTs`
+    const url = `https://eth-sepolia.g.alchemy.com/nft/v2/${apiKey}/getNFTs`;
 
     const options = {
       method: 'GET',
       url: url,
-      params: { owner: address, withMetadata: 'true', pageSize: '100' },
+      params: { owner: inputAddress, withMetadata: 'true', pageSize: '100' },
       headers: { accept: 'application/json' },
     };
-    interface NftInfo {
-  name: string;
-  description: string;
-}
 
     axios
       .request(options)
@@ -35,25 +39,34 @@ function GetNft({ address, onGetNft }: GetNftProps) {
           name: nft.contractMetadata.name,
           description: nft.description,
         }));
-    
+
         // Call the onGetNft callback with the extracted data
         onGetNft(nftInfo);
+
+        setIsLoading(false);
+        setNftData(nftInfo);
       })
-    
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
+        setNftData([]);
       });
-  }, [address, onGetNft]);
+  };
+
+  useEffect(() => {
+    // You can add any additional logic here when the address prop changes.
+    // For example, you may want to re-fetch data.
+    setInputAddress(address);
+  }, [address]);
 
   return (
     <div>
-      <div>
-      <h2>Get NFT</h2>
+      <h3>Get NFT</h3>
       <div>
         <input
           type="text"
           placeholder="Enter Ethereum Address"
-          value={address}
+          value={inputAddress}
           onChange={handleAddressChange}
         />
         <button onClick={handleGetNft}>Get NFT</button>
@@ -62,24 +75,22 @@ function GetNft({ address, onGetNft }: GetNftProps) {
       {isLoading ? (
         <p>Loading NFT data...</p>
       ) : (
-        <div>{nftData.length === 0 ? (
-          <p>No NFTs found for the given address.</p>
-        ) : (
-          <ul>
-            {nftData.map((nft: NftInfo, index: number) => (
-              <li key={index}>
-                <strong>Name:</strong> {nft.name}
-                <br />
-                <strong>Description:</strong> {nft.description}
-              </li>
-            ))}
-          </ul>
-    
-        
-                )}
+        <div>
+          {nftData.length === 0 ? (
+            <p>No NFTs found for the given address.</p>
+          ) : (
+            <ul>
+              {nftData.map((nft: any, index: number) => (
+                <li key={index}>
+                  <strong>Name:</strong> {nft.name}
+                  <br />
+                  <strong>Description:</strong> {nft.description}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
-    </div>
     </div>
   );
 }

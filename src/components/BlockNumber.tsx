@@ -34,7 +34,7 @@ function BlockNumber() {
 
   return (
     <div>
-      <h2>Polygon zkEVM Block Number</h2>
+      <h3>Get Polygon zkEVM Block Number</h3>
       <p>Current Block Number: {blockNumber}</p>
       <button onClick={fetchBlockNumber}>Fetch Block Number</button>
     </div>

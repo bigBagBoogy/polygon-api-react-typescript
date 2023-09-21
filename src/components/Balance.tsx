@@ -38,7 +38,7 @@ function BalanceForm({ onGetBalance }: BalanceFormProps) {
   
     return (
       <div>
-        <h2>Get Balance</h2>
+        <h3>Get Balance</h3>
         <div>
           <input
             type="text"
