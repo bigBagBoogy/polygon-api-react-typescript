@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import env from 'react-dotenv';
+import './GetNft.css';
 
 interface GetNftProps {
   address: string;
@@ -81,37 +82,37 @@ function GetNft({ address, onGetNft }: GetNftProps) {
           {nftData.length === 0 ? (
             <p>No NFTs found for the given address.</p>
           ) : (
-            <ul>
-              {nftData.filter((nft: any) => nft.media)
-              .map((nft: any, index: number) => (
-                <li key={index}>
+            <ul className="nft-list">
+              {nftData.filter((nft: any) => nft.media).map((nft: any, index: number) => (
+                <li key={index} className="nft-tile">
                   <strong>Name:</strong> {nft.name}
                   <br />
                   <strong>Description:</strong> {nft.description}
                   <br />
                   {nft.media.toLowerCase().startsWith('data:image/svg') ? (
-                  <img
-                    src={nft.media}
-                    alt="NFT Image"
-                    style={{ width: '200px', height: '200px' }}
-                  />
-                ) : nft.media.startsWith('ipfs://') ? (
-                  <img
-                    src={`https://ipfs.io/ipfs/${nft.media.split('ipfs://')[1]}`}
-                    alt="NFT Image"
-                    style={{ width: '200px', height: '200px' }}
-                  />
-                ) : (
-                  <p>Unsupported image format</p>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    )}
-  </div>
-);
+                    <img
+                      src={nft.media}
+                      alt="NFT"
+                      style={{ width: '200px', height: '200px' }}
+                    />
+                  ) : nft.media.startsWith('ipfs://') ? (
+                    <img
+                      src={`https://ipfs.io/ipfs/${nft.media.split('ipfs://')[1]}`}
+                      alt="NFT"
+                      style={{ width: '200px', height: '200px' }}
+                    />
+                  ) : (
+                    <p>Unsupported image format</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </div>
+  );
+  
 
               }
   export default GetNft;

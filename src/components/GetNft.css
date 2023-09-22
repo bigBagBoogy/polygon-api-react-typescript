@@ -1,0 +1,34 @@
+/* Existing CSS */
+
+
+  
+  .nft-tile {
+    width: 240px;
+    height: 240px;
+    border: 2px solid #ccc;
+    padding: 16px;
+    font: 15px Arial, sans-serif;
+    text-align: center;
+    border-radius: 15px; /* Add rounded corners */
+    background-color: #f0f0f0; /* Add a background color */
+  }
+  
+  .nft-tile img {
+    max-width: 100%; /* Ensure the image fits within the tile */
+    max-height: 100%; /* Ensure the image fits within the tile */
+  }
+  
+  /* New CSS for .nft-list */
+  
+  .nft-list {
+    list-style: none; /* Remove default list styles */
+    display: grid; /* Use grid layout for horizontal arrangement */
+    grid-template-columns: repeat(4, 1fr); /* 3 columns per row */
+    gap: 10px; /* Adjust the gap between tiles */
+    padding: 0; /* Remove default padding */
+  }
+  
+/* GetNft.css */
+
+  
+  
