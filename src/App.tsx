@@ -5,8 +5,9 @@ import React, { useState } from 'react';
 import GetNft from './components/GetNft';
 
 function App() {
-  const [balance, setBalance] = useState<string | null>(null);
+  
 
+  const [balance, setBalance] = useState<string | null>(null);
   const handleGetBalance = (address: string, newBalance: string) => {
     // Update the balance state with the new balance data
     setBalance(newBalance);
@@ -25,7 +26,7 @@ function App() {
           <BlockNumber />
           <GetNft address="" onGetNft={handleGetNft} />
           {balance && <h3>Balance: {balance}</h3>}
-        </div>
+      </div>
       </div>
   );
 }
