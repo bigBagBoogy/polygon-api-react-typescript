@@ -3,10 +3,6 @@ import BalanceForm from './components/Balance';
 import BlockNumber from './components/BlockNumber';
 import React, { useState } from 'react';
 import GetNft from './components/GetNft';
-import { ToogleThemeButton } from './components/ToogleThemeButton';
-import { theme } from './theme';
-import { ChakraProvider } from "@chakra-ui/react"
-import CustomText from './components/Text';
 
 function App() {
   const [balance, setBalance] = useState<string | null>(null);
@@ -21,12 +17,9 @@ function App() {
   };
 
   return (
-    <ChakraProvider resetCSS theme={theme}>
       <div className="app-container">
         <div>
-        <CustomText fontSize="sm">Custom text with smaller font size.</CustomText>
           <h1>Polygon App</h1>
-          <ToogleThemeButton />
           <p>test address:   0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
           <BalanceForm onGetBalance={handleGetBalance} />
           <BlockNumber />
@@ -34,7 +27,6 @@ function App() {
           {balance && <h3>Balance: {balance}</h3>}
         </div>
       </div>
-    </ChakraProvider>
   );
 }
 
