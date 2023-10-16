@@ -37,13 +37,13 @@ npm install
 Create a .env file in the project root and add your Alchemy API key:
 
 env
-Copy code
+
 POLYGON_API_KEY=your-api-key
 Running the App
 Start the development server:
 
 bash
-Copy code
+
 npm start
 The app should now be running on http://localhost:3000.
 
