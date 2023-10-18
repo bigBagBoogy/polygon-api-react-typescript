@@ -20,8 +20,8 @@ function App() {
   return (
       <div className="app-container">
         <div>
-          <h1>Polygon App</h1>
-          <p>test address:   0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
+          <h1>View NFT App</h1>
+          <p>example test address:   0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
           <BalanceForm onGetBalance={handleGetBalance} />
           <BlockNumber />
           <GetNft address="" onGetNft={handleGetNft} />
