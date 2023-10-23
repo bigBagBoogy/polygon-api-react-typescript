@@ -20,7 +20,7 @@ function App() {
   return (
       <div className="app-container">
         <div>
-        <a href="https://bigbagboogy.github.io" target="_blank" rel="noopener noreferrer">Visit External Page</a>
+        <a href="https://bigbagboogy.github.io" target="_blank" rel="noopener noreferrer">Back to NFT minter</a>
           <h1>View NFT App</h1>
           <p>example test address:   0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
           <BalanceForm onGetBalance={handleGetBalance} />
