@@ -3,7 +3,7 @@
 git init
 git branch -M main
 git add .
-git commit -m "amended back home ref"
+git commit -m "uniformed to match Minter App"
 git push -u origin main
 
 # start:
