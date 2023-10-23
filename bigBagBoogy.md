@@ -3,8 +3,12 @@
 git init
 git branch -M main
 git add .
-git commit -m "added HREF"
+git commit -m "fixed HREF"
 git push -u origin main
+
+# start:
+
+npm start
 
 # remove: (for example node_modules)!
 
