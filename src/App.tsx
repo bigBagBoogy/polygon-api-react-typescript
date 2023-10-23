@@ -23,10 +23,12 @@ function App() {
         <a href="https://bigbagboogy.github.io" target="_blank" rel="noopener noreferrer">Back to NFT minter</a>
           <h1>View NFT App</h1>
           <p>example test address:   0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
-          <BalanceForm onGetBalance={handleGetBalance} />
-          <BlockNumber />
           <GetNft address="" onGetNft={handleGetNft} />
+          <br /><br />
+          <BalanceForm onGetBalance={handleGetBalance} />
           {balance && <h3>Balance: {balance}</h3>}
+          <br /><br />
+          <BlockNumber />
       </div>
       </div>
   );

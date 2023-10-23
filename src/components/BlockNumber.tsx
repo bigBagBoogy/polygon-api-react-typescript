@@ -40,10 +40,11 @@ function BlockNumber() {
   return (
     <div>
       <h3>Get Polygon zkEVM Block Number</h3>
-      <p>Current Block Number: {blockNumber}</p>
+      
       <button onClick={fetchBlockNumber}>
         Fetch Block Number
       </button>
+      <p>Current Block Number: {blockNumber}</p>
     </div>
   );
 }

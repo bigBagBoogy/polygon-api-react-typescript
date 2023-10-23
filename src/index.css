@@ -7,7 +7,7 @@ body.dark-mode {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  background: rgb(32, 23, 38);
+  background: #0f172a;
 }
 
 #darkmodeButton {
@@ -25,4 +25,31 @@ body.dark-mode {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* Style for input fields */
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #ff8f67;
+color: white;
+margin-top: 2%;
+font-weight: bold;
+font-size: 20px;
+padding: 9px 10px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+z-index: 6;
+/* Change background color on hover */
+transition: background-color 0.3s; /* Add a smooth transition effect */
+}
+h3 {
+  color: #ffd2c2;
+  margin-bottom: -3px;
 }

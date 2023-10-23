@@ -3,7 +3,7 @@
 git init
 git branch -M main
 git add .
-git commit -m "uniformed to match Minter App"
+git commit -m "uniformed CSS to match Minter App"
 git push -u origin main
 
 # start:
