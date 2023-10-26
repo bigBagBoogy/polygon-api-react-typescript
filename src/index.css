@@ -58,5 +58,5 @@ h3 {
   position: fixed; /* This will make it stay in place, even when scrolling */
   top: 0; /* Adjust this value if you want the image to be lower or higher */
   right: 0; /* This will align it to the right side */
-  max-width: 200px;
+  max-width: 150px;
 }

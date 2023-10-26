@@ -3,7 +3,7 @@
 git init
 git branch -M main
 git add .
-git commit -m "Added testnet indicator"
+git commit -m "resized testnet indicator"
 git push -u origin main
 
 # start:
