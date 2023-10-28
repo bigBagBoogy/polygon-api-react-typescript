@@ -8,8 +8,20 @@
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
 }
-
-
+a[href="https://bigbagboogy.github.io"] {
+  /* Your CSS styles go here */
+  color: rgb(133, 133, 255); /* Change the text color to blue, for example */
+  
+  text-decoration: none; /* Remove the underline */
+  font-weight: bold; /* Make the text bold */
+  /* Add more styles as needed */
+}
+/* Add styles for the hover state */
+a[href="https://bigbagboogy.github.io"]:hover {
+  color: red; /* Change text color on hover */
+  text-decoration: underline; /* Underline the text on hover */
+  /* Add more styles as needed */
+}
 
 
 /* .App {
