@@ -21,8 +21,10 @@ function App() {
       <div className="app-container">
         <div>
         <a href="https://bigbagboogy.github.io" target="_blank" rel="noopener noreferrer">Back to NFT minter</a>
-          <h1>View NFT App</h1>
-          <p>example test address:   0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
+        <h1>View NFT App <i>TESTNET</i> edition</h1>
+
+          <p>example test address:</p>
+          <p style={{ fontSize: '15px', fontWeight: 'bold' }}>0xEC5DBFed2e8A5E88De2AC7a9E5884B0bD4F6Ca7f</p>
           <GetNft address="" onGetNft={handleGetNft} />
           <br /><br />
           <BalanceForm onGetBalance={handleGetBalance} />

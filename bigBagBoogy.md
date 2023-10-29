@@ -3,7 +3,7 @@
 git init
 git branch -M main
 git add .
-git commit -m "made nft cards responsive"
+git commit -m "hid the testnet banner"
 git push -u origin main
 
 # start:
