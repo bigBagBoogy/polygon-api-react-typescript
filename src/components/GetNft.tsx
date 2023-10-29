@@ -82,7 +82,7 @@ function GetNft({ address, onGetNft }: GetNftProps) {
           {nftData.length === 0 ? (
             <p>No NFTs found for the given address.</p>
           ) : (
-            <ul className="nft-list">
+            <ul className="nft-list cards">
               {nftData.filter((nft: any) => nft.media).map((nft: any, index: number) => (
                 <li key={index} className="nft-tile">
                   <strong>Name:</strong> {nft.name}

@@ -3,7 +3,7 @@
 git init
 git branch -M main
 git add .
-git commit -m "fixed href css"
+git commit -m "made nft cards responsive"
 git push -u origin main
 
 # start:
